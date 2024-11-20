@@ -1,5 +1,5 @@
-import React from 'react';
-import { Decision } from '../types';
+import React from "react";
+import { Decision } from "../types";
 
 interface Props {
   decision: Decision;
@@ -14,13 +14,13 @@ export const DecisionStep: React.FC<Props> = ({
   onSelect,
   onReasonChange,
   selectedChoice,
-  reason
+  reason,
 }) => {
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">{decision.question}</h3>
       <p className="text-sm text-gray-600 italic">{decision.guide}</p>
-      
+
       <div className="space-y-2">
         {decision.options.map((option) => (
           <div key={option} className="flex items-center">
@@ -41,7 +41,7 @@ export const DecisionStep: React.FC<Props> = ({
       {selectedChoice && (
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Why did you choose this option?
+            选择这一选项的理由
           </label>
           <textarea
             value={reason}

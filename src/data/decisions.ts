@@ -1,41 +1,30 @@
 export const decisions = [
   {
-    question: "What type of rate limiting algorithm do you need?",
+    question: "你需要哪种类型的限流算法？",
     options: [
-      "Token Bucket",
-      "Leaky Bucket",
-      "Fixed Window Counter",
-      "Sliding Window Log",
-      "Sliding Window Counter"
+      "令牌桶",
+      "漏桶",
+      "固定窗口计数器",
+      "滑动窗口日志",
+      "滑动窗口计数器",
     ],
-    guide: "Consider throughput vs burst handling: Token Bucket allows bursts, Leaky Bucket smooths traffic, Fixed Window is simple but has edge cases, Sliding Window is more accurate but complex"
+    guide:
+      "考虑吞吐量与突发处理：令牌桶允许突发，漏桶平滑流量，固定窗口简单但有边缘情况，滑动窗口更准确但复杂",
   },
   {
-    question: "What storage mechanism will you use?",
-    options: [
-      "In-Memory (HashMap)",
-      "Redis",
-      "Database",
-      "Distributed Cache"
-    ],
-    guide: "Consider scale needs: In-Memory for single server, Redis for distributed systems, Database for persistence, Distributed Cache for high availability"
+    question: "你将使用什么存储机制？",
+    options: ["内存（HashMap）", "Redis", "数据库", "分布式缓存"],
+    guide:
+      "考虑规模需求：单服务器使用内存，分布式系统使用Redis，持久化使用数据库，高可用性使用分布式缓存",
   },
   {
-    question: "How important is accuracy vs performance?",
-    options: [
-      "High Accuracy (Sliding Window)",
-      "Balanced (Token Bucket)",
-      "High Performance (Fixed Window)"
-    ],
-    guide: "More accurate algorithms typically require more computational resources and may impact latency"
+    question: "准确性与性能哪个更重要？",
+    options: ["高准确性（滑动窗口）", "平衡（令牌桶）", "高性能（固定窗口）"],
+    guide: "更准确的算法通常需要更多的计算资源，可能会影响延迟",
   },
   {
-    question: "What level of scalability do you need?",
-    options: [
-      "Single Node",
-      "Multiple Nodes - Same Region",
-      "Global Distribution"
-    ],
-    guide: "Consider deployment architecture: Single node is simple, Multiple nodes need coordination, Global needs latency handling"
-  }
+    question: "你需要什么级别的可扩展性？",
+    options: ["单节点", "多节点 - 同一区域", "全球分布"],
+    guide: "考虑部署架构：单节点简单，多节点需要协调，全球分布需要处理延迟",
+  },
 ];

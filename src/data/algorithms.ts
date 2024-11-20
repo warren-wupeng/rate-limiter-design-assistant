@@ -7,82 +7,61 @@ export interface AlgorithmInfo {
 
 export const algorithms: AlgorithmInfo[] = [
   {
-    name: "Token Bucket",
-    description: "Tokens are added to a bucket at a fixed rate. Each request consumes a token. If there are no tokens, the request is rejected.",
-    pros: [
-      "Allows for burst traffic up to bucket size",
-      "Memory efficient",
-      "Smooth rate limiting",
-      "Simple to implement"
-    ],
+    name: "令牌桶",
+    description:
+      "以固定速率向桶中添加令牌。每个请求消耗一个令牌。如果没有令牌，请求被拒绝。",
+    pros: ["允许突发流量达到桶大小", "内存高效", "平滑的速率限制", "实现简单"],
     cons: [
-      "Need to tune bucket size and refill rate",
-      "May allow too much burst traffic in some cases",
-      "Token refill timing can be tricky in distributed systems"
-    ]
+      "需要调整桶大小和填充速率",
+      "在某些情况下可能允许过多的突发流量",
+      "在分布式系统中令牌填充时间可能很棘手",
+    ],
   },
   {
-    name: "Leaky Bucket",
-    description: "Requests enter a queue (bucket) and are processed at a fixed rate. If the bucket is full, new requests are rejected.",
-    pros: [
-      "Guarantees stable outflow rate",
-      "Good for traffic shaping",
-      "Prevents bursts completely",
-      "Memory efficient"
-    ],
+    name: "漏桶",
+    description:
+      "请求进入一个队列（桶），并以固定速率处理。如果桶满了，新请求被拒绝。",
+    pros: ["保证稳定的输出速率", "适合流量整形", "完全防止突发", "内存高效"],
     cons: [
-      "No burst handling capability",
-      "Can add latency due to queuing",
-      "Fixed processing rate might be too rigid",
-      "Queue management overhead"
-    ]
+      "没有突发处理能力",
+      "由于排队可能增加延迟",
+      "固定处理速率可能过于僵化",
+      "队列管理开销",
+    ],
   },
   {
-    name: "Fixed Window Counter",
-    description: "Counts requests in fixed time windows (e.g., per minute). Resets counter at the start of each window.",
-    pros: [
-      "Very simple to implement",
-      "Low memory usage",
-      "Clear window boundaries",
-      "Easy to understand and reason about"
-    ],
+    name: "固定窗口计数器",
+    description:
+      "在固定时间窗口（例如，每分钟）内计数请求。在每个窗口开始时重置计数器。",
+    pros: ["实现非常简单", "低内存使用", "清晰的窗口边界", "易于理解和推理"],
     cons: [
-      "Can allow twice the rate at window boundaries",
-      "Not smooth rate limiting",
-      "Sudden traffic spikes at window reset",
-      "Less accurate than sliding window"
-    ]
+      "在窗口边界可能允许两倍的速率",
+      "不是平滑的速率限制",
+      "窗口重置时突然的流量峰值",
+      "不如滑动窗口准确",
+    ],
   },
   {
-    name: "Sliding Window Log",
-    description: "Keeps track of timestamps of all requests in a sliding window. Removes old timestamps as window moves.",
-    pros: [
-      "Very accurate",
-      "No boundary conditions",
-      "Smooth rate limiting",
-      "Handles edge cases well"
-    ],
-    cons: [
-      "High memory usage",
-      "Computationally expensive",
-      "Cleanup overhead",
-      "Scales poorly with high traffic"
-    ]
+    name: "滑动窗口日志",
+    description:
+      "在滑动窗口中跟踪所有请求的时间戳。随着窗口移动，移除旧的时间戳。",
+    pros: ["非常准确", "没有边界条件", "平滑的速率限制", "很好地处理边缘情况"],
+    cons: ["高内存使用", "计算开销大", "清理开销", "在高流量下扩展性差"],
   },
   {
-    name: "Sliding Window Counter",
-    description: "Combines fixed window with rate extrapolation for the current window. Provides a smooth transition between windows.",
+    name: "滑动窗口计数器",
+    description: "结合固定窗口和当前窗口的速率外推。提供窗口之间的平滑过渡。",
     pros: [
-      "Good balance of accuracy and performance",
-      "Smooth rate limiting",
-      "Memory efficient",
-      "Better than fixed window"
+      "准确性和性能的良好平衡",
+      "平滑的速率限制",
+      "内存高效",
+      "比固定窗口更好",
     ],
     cons: [
-      "More complex to implement",
-      "Slightly less accurate than sliding log",
-      "Can be tricky to tune",
-      "May need careful synchronization in distributed systems"
-    ]
-  }
+      "实现更复杂",
+      "比滑动日志稍微不准确",
+      "可能需要仔细调整",
+      "在分布式系统中可能需要仔细同步",
+    ],
+  },
 ];
