@@ -40,10 +40,14 @@ export const DecisionStep: React.FC<Props> = ({
 
       {selectedChoice && (
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="reason"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             选择这一选项的理由
           </label>
           <textarea
+            id="reason"
             value={reason}
             onChange={(e) => onReasonChange(e.target.value)}
             className="w-full p-2 border rounded-md"
